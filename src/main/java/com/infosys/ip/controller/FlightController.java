@@ -22,6 +22,7 @@ public class FlightController {
 	private final RestTemplate restTemplate;
 
 	public FlightController(RestTemplateBuilder restTemplateBuilder) {
+		System.out.println("enter");
 		this.restTemplate = restTemplateBuilder.build();
 
 	}

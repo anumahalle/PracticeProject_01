@@ -25,6 +25,7 @@ public class HomeController {
 	private final RestTemplate restTemplate;
 
 	public HomeController(RestTemplateBuilder restTemplateBuilder) {
+		System.out.println("enter");
 		this.restTemplate = restTemplateBuilder.build();
 
 	}
