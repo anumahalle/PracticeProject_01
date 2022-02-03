@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class InfyGoBootRestClientApplication {
 
 	public static void main(String[] args) {
+		System.out.println("enter");
 		SpringApplication.run(InfyGoBootRestClientApplication.class, args);
 	}
 
