@@ -30,13 +30,35 @@ public class FlightController {
 	@PostMapping(value = "/searchFlights")
 	public ModelAndView flightSearch(@Valid @ModelAttribute("command") SearchFlights searchFlights,
 			BindingResult bindingResult, ModelMap model) {
-
+		System.out.println("Git Test");
+		if(true) {
+			System.out.println("in If");
+		}
+		else {
+			System.out.println("in else");
+		}
 		String restUrl = environment.getProperty("RestUrl");
 		ModelAndView modelAndView = null;
 		if (bindingResult.hasErrors()) {
 			new ModelAndView("searchFlights", "command", searchFlights);
 		}
 
+		@PostMapping(value = "/searchTrain")
+		public ModelAndView trainSearch(@Valid @ModelAttribute("command") SearchFlights searchFlights,
+				BindingResult bindingResult, ModelMap model) {
+			System.out.println("Git Test");
+			if(true) {
+				System.out.println("in If");
+			}
+			else {
+				System.out.println("in else");
+			}
+			System.out.println("AAA");
+			String restUrl = environment.getProperty("RestUrl");
+			ModelAndView modelAndView = null;
+			if (bindingResult.hasErrors()) {
+				new ModelAndView("searchFlights", "command", searchFlights);
+			}
 		@SuppressWarnings("unchecked")
 		List<com.infosys.ip.model.SearchFlights> availableFlights = restTemplate
 				.getForObject(restUrl + "/FlightAPI/" + searchFlights.getSource() + "/" + searchFlights.getDestination()
