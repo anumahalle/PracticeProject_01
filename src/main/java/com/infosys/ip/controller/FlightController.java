@@ -31,23 +31,62 @@ public class FlightController {
 	public ModelAndView flightSearch(@Valid @ModelAttribute("command") SearchFlights searchFlights,
 			BindingResult bindingResult, ModelMap model) {
 
+		if(false) {
+			System.out.println("in If");
+		}
+		else if(true) {
+			System.out.println("in If");
+		}
+		else {
+			System.out.println("aaaa");
+			}
+
+		System.out.println("Git Test");
+		if(true) {
+			System.out.println("in If");
+		}
+		else {
+			System.out.println("in else");
+
+		}
 		String restUrl = environment.getProperty("RestUrl");
 		ModelAndView modelAndView = null;
 		if (bindingResult.hasErrors()) {
 			new ModelAndView("searchFlights", "command", searchFlights);
 		}
-
-		@SuppressWarnings("unchecked")
-		List<com.infosys.ip.model.SearchFlights> availableFlights = restTemplate
-				.getForObject(restUrl + "/FlightAPI/" + searchFlights.getSource() + "/" + searchFlights.getDestination()
-						+ "/" + searchFlights.getJourneyDate(), List.class);
-		List<String> sources = restTemplate.getForObject(restUrl + "/FlightAPI/source", List.class);
-		List<String> destinations = restTemplate.getForObject(restUrl + "/FlightAPI/destination", List.class);
-		model.addAttribute("availableFlights", availableFlights);
-		model.addAttribute("size", availableFlights.size());
-		modelAndView = new ModelAndView("searchFlights", "command", searchFlights);
-		modelAndView.addObject("sourceList", sources);
-		modelAndView.addObject("destinationList", destinations);
 		return modelAndView;
+
 	}
+		
+
+		@PostMapping(value = "/searchTrain")
+		public ModelAndView trainSearch(@Valid @ModelAttribute("command") SearchFlights searchFlights,
+				BindingResult bindingResult, ModelMap model) {
+			System.out.println("Git Test");
+			if(true) {
+				System.out.println("in If");
+			}
+			else {
+				System.out.println("in else");
+			}
+			System.out.println("AAA");
+			String restUrl = environment.getProperty("RestUrl");
+			ModelAndView modelAndView = null;
+			if (bindingResult.hasErrors()) {
+				new ModelAndView("searchFlights", "command", searchFlights);
+			}
+			return modelAndView;
+		}
+		
+	@PostMapping(value = "/searchFlights")
+	public ModelAndView CarSearch(@Valid @ModelAttribute("command") SearchFlights searchFlights,
+			BindingResult bindingResult, ModelMap model) {
+
+		String restUrl = environment.getProperty("RestUrl");
+		ModelAndView modelAndView = null;
+		if (bindingResult.hasErrors()) {
+			new ModelAndView("searchFlights", "command", searchFlights);
+		}
+		return modelAndView;}
 }
+	
