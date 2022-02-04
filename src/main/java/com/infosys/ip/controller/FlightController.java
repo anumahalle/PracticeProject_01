@@ -29,13 +29,23 @@ public class FlightController {
 	@PostMapping(value = "/searchFlights")
 	public ModelAndView flightSearch(@Valid @ModelAttribute("command") SearchFlights searchFlights,
 			BindingResult bindingResult, ModelMap model) {
-
+		if(false) {
+			System.out.println("in If");
+		}
+		else if(true) {
+			System.out.println("in If");
+		}
+		else {
+			System.out.println("aaaa");
+		}
 		String restUrl = environment.getProperty("RestUrl");
 		ModelAndView modelAndView = null;
 		if (bindingResult.hasErrors()) {
 			new ModelAndView("searchFlights", "command", searchFlights);
 		}
 
+		
+		
 		@SuppressWarnings("unchecked")
 		List<com.infosys.ip.model.SearchFlights> availableFlights = restTemplate
 				.getForObject(restUrl + "/FlightAPI/" + searchFlights.getSource() + "/" + searchFlights.getDestination()
@@ -49,4 +59,14 @@ public class FlightController {
 		modelAndView.addObject("destinationList", destinations);
 		return modelAndView;
 	}
+	@PostMapping(value = "/searchFlights")
+	public ModelAndView CarSearch(@Valid @ModelAttribute("command") SearchFlights searchFlights,
+			BindingResult bindingResult, ModelMap model) {
+
+		String restUrl = environment.getProperty("RestUrl");
+		ModelAndView modelAndView = null;
+		if (bindingResult.hasErrors()) {
+			new ModelAndView("searchFlights", "command", searchFlights);
+		}
+		return modelAndView;}
 }
