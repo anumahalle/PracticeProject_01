@@ -100,4 +100,15 @@ public class FlightController {
 		}
 		return modelAndView;}
 }
+@PostMapping(value = "/Flights")
+public ModelAndView Search(@Valid @ModelAttribute("command") SearchFlights searchFlights,
+		BindingResult bindingResult, ModelMap model) {
+
+	String restUrl = environment.getProperty("RestUrl");
+	ModelAndView modelAndView = null;
+	if (bindingResult.hasErrors()) {
+		new ModelAndView("searchFlights", "command", searchFlights);
+	}
+	return modelAndView;}
+}
 	
