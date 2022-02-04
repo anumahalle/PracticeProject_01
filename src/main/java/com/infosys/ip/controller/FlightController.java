@@ -98,10 +98,12 @@ public class FlightController {
 		if (bindingResult.hasErrors()) {
 			new ModelAndView("searchFlights", "command", searchFlights);
 		}
-		return modelAndView;}
-}
+		return modelAndView;
+		}
+	
+
 @PostMapping(value = "/Flights")
-public ModelAndView Search(@Valid @ModelAttribute("command") SearchFlights searchFlights,
+public ModelAndView MySearch(@Valid @ModelAttribute("command") SearchFlights searchFlights,
 		BindingResult bindingResult, ModelMap model) {
 
 	String restUrl = environment.getProperty("RestUrl");
@@ -111,4 +113,14 @@ public ModelAndView Search(@Valid @ModelAttribute("command") SearchFlights searc
 	}
 	return modelAndView;}
 }
-	
+@PostMapping(value = "/Flights")
+public ModelAndView My(@Valid @ModelAttribute("command") SearchFlights searchFlights,
+		BindingResult bindingResult, ModelMap model) {
+
+	String restUrl = environment.getProperty("RestUrl");
+	ModelAndView modelAndView = null;
+	if (bindingResult.hasErrors()) {
+		new ModelAndView("searchFlights", "command", searchFlights);
+	}
+	return modelAndView;}
+}
